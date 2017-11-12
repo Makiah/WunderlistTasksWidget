@@ -8,16 +8,7 @@ sh ./WunderlistTasksWidget/run.sh
 """
 
 # The rate at which the app updates.  
-refreshFrequency: 100000
-
-# Called to display this item on the desktop.  
-render: (output) -> 
-  console.log "Got render" 
-  return """  
-  <h1>Important Wunderlist Tasks</h1>
-  <div id="taskSections">
-  </div>
-"""
+refreshFrequency: 900000
 
 # Takes care of actually inserting the data into the domEl.  
 parseTasksJSON: (tasksJSON, domEl) -> 
@@ -25,7 +16,8 @@ parseTasksJSON: (tasksJSON, domEl) ->
   for taskName in tasksJSON.taskNames
     tasksString = tasksString + "<li>" + taskName + "</li>"
 
-  $(domEl).find("#taskSections").append("<div class='taskSection'><h2>" + tasksJSON.listTitle + "</h2><ul>" + tasksString + "</ul></div>")
+  if (tasksString != "")
+  	$(domEl).find("#container").append("<div class='listHeading'><h3>" + tasksJSON.listTitle + "</h3></div><div class='listContents'><ul>" + tasksString + "</ul></div>")
 
 
 # Called when the refreshFrequency timer expires.  
@@ -46,25 +38,45 @@ update: (output, domEl) ->
       @parseTasksJSON(tasksJSON, domEl)
   
 
+# Called to display this item on the desktop.  
+render: (output) -> 
+  console.log "Got render" 
+  return """  
+  <div id="container">
+  </div>
+"""
+
 style: """      
   top: 20px
   left: 20px 
   width: 500px
-  height: 600px
-  background-color: white
-                
-  h1            
-    color: black 
-    width: 100%
-    height: 100px;
+  height: 500px
 
-  #taskSections
-    background-color: red;
-    width: 100%;
-    height: 1500px;
+  #container
+  	background-color: rgba(80, 80, 80, 0.51)
+  	border: 1px solid white
+  	width: 500px;
+  	height: 500px;
 
-  .taskSection
-    background-color: green
-    width: 100%;
-    height: 500px;
+  .listHeading
+  	width: calc(100% - 20px)
+  	background-color: rgba(74, 74, 74, 0.65)
+  	padding: 10px
+
+  .listHeading h3 
+  	font-family: sans-serif
+  	color: white
+
+  .listContents ul
+  	list-style: none
+  	padding: 0
+  	margin: 0
+
+  .listContents li
+  	color: white
+  	font-family: sans-serif
+  	margin: 8px 10px;
+
+  h1,h2,h3
+  	margin: 0
 """
