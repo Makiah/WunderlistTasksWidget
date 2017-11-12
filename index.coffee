@@ -8,7 +8,7 @@ sh ./WunderlistTasksWidget/run.sh
 """
 
 # The rate at which the app updates.  
-refreshFrequency: 900000
+refreshFrequency: 10000
 
 # Takes care of actually inserting the data into the domEl.  
 parseTasksJSON: (tasksJSON, domEl) -> 
@@ -24,6 +24,9 @@ parseTasksJSON: (tasksJSON, domEl) ->
 update: (output, domEl) ->
   console.log "Got update!"
   console.log "Output is ", output
+
+  # Empty the current list of tasks (will just be repopulated otherwise)
+  $(domEl).find('#container').empty()
 
   # Split output into single line snippets
   outputs = output.split("\n")
