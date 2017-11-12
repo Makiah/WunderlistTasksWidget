@@ -5,6 +5,8 @@ CLIENT_ID="3badb48a0395375f93e0"
 SERVER_ENDPOINT="http://127.0.0.1:4000/authorization_code_callback"
 ACCESS_TOKEN=""
 
+echo "Testing"
+
 # Start the OAuth2 server if not already up.  
 TOKEN_STATUS="$(curl --silent http://127.0.0.1:4000/pls-can-i-has-access-token)"
 
