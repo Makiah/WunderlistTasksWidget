@@ -27,14 +27,12 @@ then
 	# Wait until the access token has been obtained.  
 	while [ "$TOKEN_STATUS" == "nope!" ] || [ "$TOKEN_STATUS" == "" ]; do
 		TOKEN_STATUS=$(curl --silent http://127.0.0.1:4000/pls-can-i-has-access-token)
-	    echo "Was $TOKEN_STATUS" >> /Users/makiah/Desktop/outputdebug.txt
 	    sleep 3
 	done
 fi
 
 # We've got the access token!  NOICE.  
 ACCESS_TOKEN="$TOKEN_STATUS"
-echo "The access token is $ACCESS_TOKEN" >> /Users/makiah/Desktop/outputdebug.txt
 
 # Tell the other lib to use the SDK and print everything out!  
 /usr/local/Cellar/node/8.9.0/bin/node "/Users/makiah/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/datadisplay/datadisplayer.js" $CLIENT_ID $ACCESS_TOKEN
