@@ -1,0 +1,17 @@
+{
+  "name": "WunderlistOAuth",
+  "version": "0.0.0",
+  "description": "Carries out OAuth authentication (as callback) for Wunderlist server.",
+  "main": "server.js",
+  "author": "Makiah Bennett",
+  "private": true,
+  "license": "BSD",
+  "dependencies": {
+    "express": "^4.15.2",
+    "cookie-parser": "^1.4.3",
+    "request": "^2.81.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

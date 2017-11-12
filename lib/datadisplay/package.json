@@ -1,0 +1,15 @@
+{
+  "name": "WunderlistDataDisplayer",
+  "version": "0.0.0",
+  "description": "Outputs data for Übersicht",
+  "main": "datadisplayer.js",
+  "author": "Makiah Bennett",
+  "private": true,
+  "license": "BSD",
+  "dependencies": {
+    "wunderlist": "0.1.3"
+  },
+  "scripts": {
+    "start": "node datadisplayer.js"
+  }
+}
