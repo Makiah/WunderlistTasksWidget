@@ -1,2 +1,3 @@
-# WunderlistTasksWidget
-Displays open Wunderlist tasks on the mac desktop using Übersicht
+# Wunderlist Tasks Widget
+
+Instructions for use coming soon!  
