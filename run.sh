@@ -5,8 +5,6 @@ CLIENT_ID="3badb48a0395375f93e0"
 SERVER_ENDPOINT="http://127.0.0.1:4000/authorization_code_callback"
 ACCESS_TOKEN=""
 
-echo "Testing"
-
 # Start the OAuth2 server if not already up.  
 TOKEN_STATUS="$(curl --silent http://127.0.0.1:4000/pls-can-i-has-access-token)"
 
@@ -15,7 +13,7 @@ then
 	# Ensure server is started.  
 	if [ "$TOKEN_STATUS" = "" ]
 	then
-		/usr/local/Cellar/node/8.9.0/bin/node "/Users/makiah/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/oauthserver/server.js" & # This & tells the script to do it asynchronously.  
+		/usr/local/Cellar/node/8.9.0/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/oauthserver/server.js" & # This & tells the script to do it asynchronously.  
 		sleep 2
 	fi
 
@@ -35,4 +33,4 @@ fi
 ACCESS_TOKEN="$TOKEN_STATUS"
 
 # Tell the other lib to use the SDK and print everything out!  
-/usr/local/Cellar/node/8.9.0/bin/node "/Users/makiah/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/datadisplay/datadisplayer.js" $CLIENT_ID $ACCESS_TOKEN
+/usr/local/Cellar/node/8.9.0/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/datadisplay/datadisplayer.js" $CLIENT_ID $ACCESS_TOKEN
