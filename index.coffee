@@ -50,16 +50,16 @@ render: (output) ->
 """
 
 style: """      
-  top: 20px
-  left: 20px 
-  width: 500px
-  height: 500px
+  top: 5px
+  left: 5px 
+  width: 400px
+  height: 765px
 
   #container
   	background-color: rgba(80, 80, 80, 0.51)
   	border: 1px solid white
-  	width: 500px;
-  	height: 500px;
+  	width: 400px;
+  	height: 765px;
 
   .listHeading
   	width: calc(100% - 20px)
