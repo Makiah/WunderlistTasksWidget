@@ -22,6 +22,10 @@ parseTasksJSON: (tasksJSON, domEl) ->
 
 # Called when the refreshFrequency timer expires.  
 update: (output, domEl) ->
+  if output.indexOf("OFFLINE") != -1
+    console.log("Currently offline, not updating.")
+    return;
+
   console.log "Got update!"
   console.log "Output is ", output
 

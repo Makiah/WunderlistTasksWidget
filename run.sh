@@ -1,5 +1,13 @@
 #! /bin/bash
 
+# Check whether online (don't do anything otherwise)...
+if ping -c 1 google.com >> /dev/null 2>&1; then
+    echo "online"
+else
+    echo "OFFLINE"
+    exit 0
+fi
+
 # Required for OAuth2.  
 CLIENT_ID="3badb48a0395375f93e0"
 SERVER_ENDPOINT="http://127.0.0.1:4000/authorization_code_callback"
