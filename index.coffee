@@ -50,6 +50,7 @@ render: (output) ->
   console.log "Got render" 
   return """  
   <div id="wunderlistHeading">
+    <div id="subWunderlistHeading"></div>
     <img src="./WunderlistTasksWidget/wunderlist-icon.png"/>
   </div>
   <div id="taskListsContainer">
@@ -63,13 +64,17 @@ style: """
   height: 765px
 
   #wunderlistHeading
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 5px;
     text-align: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+
+  #subWunderlistHeading
+    background-color: rgba(255, 255, 255, 0.8);
     margin-bottom: 5px
-    border: 1px solid white;
+    height: 70px;
+    width: 400px;
+    top: 15px;
+    z-index: -1;
+    position: absolute;
+    border-radius: 5px
 
   #wunderlistHeading img 
     height: 100px;
@@ -77,20 +82,24 @@ style: """
 
   .listHeading
     width: calc(100% - 20px)
-    background-color: rgba(74, 74, 74, 0.65)
+    background-color: rgba(74, 74, 74, 0.7)
     padding: 10px
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 
   .listHeading h3 
   	font-family: sans-serif
   	color: white
     
   .listContents
-    background-color: rgba(74, 74, 74, 0.3);
-    border-left: 1px solid rgba(74, 74, 74, 0.65);
-    border-bottom: 1px solid rgba(74, 74, 74, 0.65);
-    border-right: 1px solid rgba(74, 74, 74, 0.65);
+    background-color: rgba(74, 74, 74, 0.4);
+    border-left: 1px solid rgba(74, 74, 74, 0.7);
+    border-bottom: 1px solid rgba(74, 74, 74, 0.7);
+    border-right: 1px solid rgba(74, 74, 74, 0.7);
     padding: 10px;
     margin-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 
   .listContents ul
   	list-style: none
