@@ -15,9 +15,9 @@ parseTasksJSON: (tasksJSON, domEl) ->
   tasksString = ""
   for taskName in tasksJSON.taskNames
     tasksString = tasksString + "<li>" + taskName + "</li>"
-
+    
   if (tasksString != "")
-  	$(domEl).find("#container").append("<div class='listHeading'><h3>" + tasksJSON.listTitle + "</h3></div><div class='listContents'><ul>" + tasksString + "</ul></div>")
+  	$(domEl).find("#taskListsContainer").append("<div class='listHeading'><h3>" + tasksJSON.listTitle + "</h3></div><div class='listContents'><ul>" + tasksString + "</ul></div>")
 
 
 # Called when the refreshFrequency timer expires.  
@@ -30,7 +30,7 @@ update: (output, domEl) ->
   console.log "Output is ", output
 
   # Empty the current list of tasks (will just be repopulated otherwise)
-  $(domEl).find('#container').empty()
+  $(domEl).find('#taskListsContainer').empty()
 
   # Split output into single line snippets
   outputs = output.split("\n")
@@ -49,7 +49,10 @@ update: (output, domEl) ->
 render: (output) -> 
   console.log "Got render" 
   return """  
-  <div id="container">
+  <div id="wunderlistHeading">
+    <img src="./WunderlistTasksWidget/wunderlist-icon.png"/>
+  </div>
+  <div id="taskListsContainer">
   </div>
 """
 
@@ -59,20 +62,35 @@ style: """
   width: 400px
   height: 765px
 
-  #container
-  	background-color: rgba(80, 80, 80, 0.51)
-  	border: 1px solid white
-  	width: 400px;
-  	height: 765px;
+  #wunderlistHeading
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 5px;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-bottom: 5px
+    border: 1px solid white;
+
+  #wunderlistHeading img 
+    height: 100px;
+    width: 100px;
 
   .listHeading
-  	width: calc(100% - 20px)
-  	background-color: rgba(74, 74, 74, 0.65)
-  	padding: 10px
+    width: calc(100% - 20px)
+    background-color: rgba(74, 74, 74, 0.65)
+    padding: 10px
 
   .listHeading h3 
   	font-family: sans-serif
   	color: white
+    
+  .listContents
+    background-color: rgba(74, 74, 74, 0.3);
+    border-left: 1px solid rgba(74, 74, 74, 0.65);
+    border-bottom: 1px solid rgba(74, 74, 74, 0.65);
+    border-right: 1px solid rgba(74, 74, 74, 0.65);
+    padding: 10px;
+    margin-bottom: 5px;
 
   .listContents ul
   	list-style: none
@@ -82,7 +100,7 @@ style: """
   .listContents li
   	color: white
   	font-family: sans-serif
-  	margin: 8px 10px;
+  	margin: 0px 0px 10px 0px
 
   h1,h2,h3
   	margin: 0

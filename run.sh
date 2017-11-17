@@ -39,6 +39,7 @@ function requestToken()
 		# Wait until the access token has been obtained.  
 		while [ "$TOKEN_STATUS" == "nope!" ] || [ "$TOKEN_STATUS" == "" ]; do
 			TOKEN_STATUS=$(curl --silent http://127.0.0.1:4000/pls-can-i-has-access-token)
+			echo "Got $TOKEN_STATUS"
 		    sleep 3
 		done
 	fi
