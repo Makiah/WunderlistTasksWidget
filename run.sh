@@ -45,7 +45,7 @@ function requestToken()
 		done
 	fi
 
-	echo "$TOKEN_STATUS"
+	echo "$TOKEN_STATUS" >> "accesstoken.txt"
 	ACCESS_TOKEN=$TOKEN_STATUS
 }
 
