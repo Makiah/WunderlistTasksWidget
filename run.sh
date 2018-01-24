@@ -1,5 +1,21 @@
 #! /bin/bash
 
+# Determine whether node is installed first (doesn't work currently)
+# function program_is_installed {
+#   # set to 1 initially
+#   local return_=1
+#   # set to 0 if not found
+#   type $1 >/dev/null 2>&1 || { local return_=0; }
+#   # return value
+#   echo "$return_"
+# }
+
+# if [ $(program_is_installed node) = 1 ]; then 
+# 	echo "Yes"
+# else
+# 	echo "No"
+# fi
+
 # Check whether online (don't do anything otherwise)...
 if ping -c 1 google.com >> /dev/null 2>&1; then
     echo "online"
@@ -54,7 +70,18 @@ if [ -e "accesstoken.txt" ]; then
 	if [[ $(< accesstoken.txt) != "" ]]; then
 		# Ensure that the access token is valid.  
 		POSSIBLE_TOKEN=$(< accesstoken.txt)
-		if [ $(curl --write-out %{http_code} --silent --output /dev/null -H "X-Access-Token: $POSSIBLE_TOKEN" -H "X-Client-ID: $CLIENT_ID" -I https://a.wunderlist.com/api/v1/user) = 200 ]; then 
+
+		echo "Checking \"$POSSIBLE_TOKEN\""
+
+		# Indicates something other than an invalid token, just a weird ubersicht error.  
+		STATUS_RESULT=500
+		while [ $STATUS_RESULT = 500 ]; 
+		do
+			STATUS_RESULT=$(curl --write-out %{http_code} --silent --output /dev/null -H "X-Access-Token: $POSSIBLE_TOKEN" -H "X-Client-ID: $CLIENT_ID" -I https://a.wunderlist.com/api/v1/user)
+			echo "Got response $STATUS_RESULT"
+		done
+
+		if [ $STATUS_RESULT = 200 ]; then 
 			ACCESS_TOKEN=$POSSIBLE_TOKEN
 		else
 			rm accesstoken.txt

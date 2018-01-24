@@ -58,8 +58,8 @@ render: (output) ->
 """
 
 style: """      
-  top: 5px
-  left: 5px 
+  top: 100px
+  left: 840px 
   width: 400px
   height: 765px
 
