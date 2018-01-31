@@ -44,7 +44,7 @@ function requestToken()
 		if [ "$TOKEN_STATUS" = "" ]
 		then
 			echo "Starting oauthserver"
-			/usr/local/Cellar/node/8.9.0/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/oauthserver/server.js" & # This & tells the script to do it asynchronously.  
+			/usr/local/Cellar/node/*/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/oauthserver/server.js" & # This & tells the script to do it asynchronously.  
 			sleep 2
 		fi
 
@@ -96,5 +96,5 @@ fi
 
 # Tell the other lib to use the SDK and print everything out!  
 echo "Starting datadisplayer"
-/usr/local/Cellar/node/8.9.0/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/datadisplay/datadisplayer.js" $CLIENT_ID $ACCESS_TOKEN
+/usr/local/Cellar/node/*/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/datadisplay/datadisplayer.js" $CLIENT_ID $ACCESS_TOKEN
 
