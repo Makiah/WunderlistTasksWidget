@@ -66,8 +66,8 @@ render: (output) ->
 
 style: """      
   top: 0px
-  left: 600px 
-  width: 400px
+  left: 48% 
+  width: 30%
   height: 765px
 
   #wunderlistHeading
@@ -77,7 +77,7 @@ style: """
     background-color: rgba(255, 255, 255, 0.8);
     margin-bottom: 5px
     height: 70px;
-    width: 400px;
+    width: 100%
     top: 15px;
     z-index: -1;
     position: absolute;
