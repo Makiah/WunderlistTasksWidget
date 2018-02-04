@@ -16,6 +16,15 @@
 # 	echo "No"
 # fi
 
+# Ensure the existence of Node (required dependency)
+if [ ! -d "/usr/local/Cellar/" ]; then
+	echo "ERROR: brew wasn't found at /usr/local/Cellar!"
+	exit 0
+elif [ ! -d "/usr/local/Cellar/node" ]; then
+	echo "ERROR: brew is installed, but node wasn't found!"
+	exit 0
+fi
+
 # Check whether online (don't do anything otherwise)...
 if ping -c 1 google.com >> /dev/null 2>&1; then
     echo "online"

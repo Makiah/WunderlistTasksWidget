@@ -31,6 +31,7 @@ update: (output, domEl) ->
 
   # Empty the current list of tasks (will just be repopulated otherwise)
   $(domEl).find('#taskListsContainer').empty()
+  $(domEl).find('#errorContainer').empty()
 
   # Split output into single line snippets
   outputs = output.split("\n")
@@ -38,6 +39,10 @@ update: (output, domEl) ->
 
   # Find the ADDTASKS lines and parse them.  
   for line in outputs 
+    if line.indexOf("ERROR: ") != -1
+      # Adds the error to the visible window.  
+      $(domEl).find('#errorContainer').append("<p>" + line.substring(7, line.length) + "</p>")
+
     if line.indexOf("ADDTASKS") != -1
       # Adds a new set of tasks to the visible list.  
       tasksJSON = JSON.parse(line.substring(8, line.length))
@@ -52,6 +57,8 @@ render: (output) ->
   <div id="wunderlistHeading">
     <div id="subWunderlistHeading"></div>
     <img src="./WunderlistTasksWidget/wunderlist-icon.png"/>
+  </div>
+  <div id="errorContainer">
   </div>
   <div id="taskListsContainer">
   </div>
@@ -79,6 +86,9 @@ style: """
   #wunderlistHeading img 
     height: 100px;
     width: 100px;
+
+  #errorContainer p
+    color: red
 
   .listHeading
     width: calc(100% - 20px)
