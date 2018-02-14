@@ -8,7 +8,7 @@ sh ./WunderlistTasksWidget/run.sh
 """
 
 # The rate at which the app updates.  
-refreshFrequency: 10000
+refreshFrequency: 60000
 
 # Takes care of actually inserting the data into the domEl.  
 parseTasksJSON: (tasksJSON, domEl) -> 
