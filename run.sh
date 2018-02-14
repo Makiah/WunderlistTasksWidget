@@ -17,11 +17,8 @@
 # fi
 
 # Ensure the existence of Node (required dependency)
-if [ ! -d "/usr/local/Cellar/" ]; then
-	echo "ERROR: brew wasn't found at /usr/local/Cellar!"
-	exit 0
-elif [ ! -d "/usr/local/Cellar/node" ]; then
-	echo "ERROR: brew is installed, but node wasn't found!"
+if [ ! -e "/usr/local/bin/node" ]; then
+	echo "ERROR: Node isn't installed at /usr/local/bin/node!  Please install brew and run \"brew install node\""
 	exit 0
 fi
 
@@ -53,7 +50,7 @@ function requestToken()
 		if [ "$TOKEN_STATUS" = "" ]
 		then
 			echo "Starting oauthserver"
-			/usr/local/Cellar/node/*/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/oauthserver/server.js" & # This & tells the script to do it asynchronously.  
+			/usr/local/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/oauthserver/server.js" & # This & tells the script to do it asynchronously.  
 			sleep 2
 		fi
 
@@ -105,5 +102,5 @@ fi
 
 # Tell the other lib to use the SDK and print everything out!  
 echo "Starting datadisplayer"
-/usr/local/Cellar/node/*/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/datadisplay/datadisplayer.js" $CLIENT_ID $ACCESS_TOKEN
+/usr/local/bin/node "$HOME/Library/Application Support/Übersicht/widgets/WunderlistTasksWidget/lib/datadisplay/datadisplayer.js" $CLIENT_ID $ACCESS_TOKEN
 

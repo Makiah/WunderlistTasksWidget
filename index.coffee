@@ -87,8 +87,13 @@ style: """
     height: 100px;
     width: 100px;
 
+  #errorContainer
+    background-color: rgba(74, 74, 74, 0.7)
+
   #errorContainer p
     color: red
+    font-family: sans-serif
+    font-size: 20px;
 
   .listHeading
     width: calc(100% - 20px)

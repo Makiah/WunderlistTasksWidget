@@ -18,4 +18,7 @@ If you log in, this app should complete the OAuth flow and close the tab, then d
 
 Note that if you want to ```git clone``` this code, you'll have to also install NPM and run ```npm install``` in /lib/oauthserver and /lib/datadisplay to get the node_modules directories.  
 
+## Configurable Features
+In /lib/datadisplay/datadisplayer.js, you can change ```var includeLists = []``` to ```var includeLists = ["Some List Name", "Some Other List Name"]```, which will filter the lists which are displayed on your desktop to only those in the array (instead of them all).  If the list size is zero, it will display all lists by default.  
+
 **Disclaimer**: I haven't done a lot to make this code super secure: the Wunderlist access token is obtained by querying the local server, and I also store the token in plain text currently.  If you use Wunderlist for secure work stuff then don't use this unless you're certain there's no risk of being hijacked (I'm a student, the worse thing that could happen is someone delete my test reminder, which would take approximately 5 seconds to put back).  
