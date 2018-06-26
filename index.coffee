@@ -20,22 +20,37 @@ parseTasksJSON: (tasksJSON, domEl) ->
   	$(domEl).find("#taskListsContainer").append("<div class='listHeading'><h3>" + tasksJSON.listTitle + "</h3></div><div class='listContents'><ul>" + tasksString + "</ul></div>")
 
 
+# Inspiration from https://github.com/atika/Ubersicht-GitFinder/blob/53b6b8eda1959902741a9be7db6f247af82e4a8c/GitFinder.widget/index.coffee
+setPosition: (position, domEl) ->
+  # Position is a string of left % | top % | width % | height %	
+  # POSITION OF THE WIDGET
+  positions = position.split("|")
+  $(domEl).css({'left': positions[0] + "%",'top': positions[1] + "%",'width': positions[2] + "%",'height': positions[3] + "%"})
+
+
 # Called when the refreshFrequency timer expires.  
 update: (output, domEl) ->
-  if output.indexOf("OFFLINE") != -1
+  console.log("Update refreshed");
+
+  # Split output into single line snippets
+  outputs = output.split("\n")
+  console.log("Update lines are", outputs);
+
+  # Parse the customization file.  
+  config = JSON.parse(outputs[outputs.indexOf("CONFFILE") + 1])
+  console.log("Config file is " + JSON.stringify(config))
+  positioningString = config["positioning"]["left-offset-percentage"] + "|" + config["positioning"]["top-offset-percentage"] + "|" + config["positioning"]["width-percentage"] + "|" + config["positioning"]["height-percentage"]
+  console.log("Positioning will be " + positioningString)
+  @setPosition(positioningString, domEl)
+
+  # Quit this early if we're online.  
+  if outputs.indexOf("OFFLINE") != -1
     console.log("Currently offline, not updating.")
     return;
-
-  console.log "Got update!"
-  console.log "Output is ", output
 
   # Empty the current list of tasks (will just be repopulated otherwise)
   $(domEl).find('#taskListsContainer').empty()
   $(domEl).find('#errorContainer').empty()
-
-  # Split output into single line snippets
-  outputs = output.split("\n")
-  console.log("Snipped to", outputs);
 
   # Find the ADDTASKS lines and parse them.  
   for line in outputs 

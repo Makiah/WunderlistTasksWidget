@@ -16,6 +16,12 @@
 # 	echo "No"
 # fi
 
+# Read and output the configuration file
+config=`cat ./WunderlistTasksWidget/customization.json`
+echo "CONFFILE" 
+echo "$config"|tr '\n' ' ' # removes newlines
+echo "" # required
+
 # Ensure the existence of Node (required dependency)
 if [ ! -e "/usr/local/bin/node" ]; then
 	echo "ERROR: Node isn't installed at /usr/local/bin/node!  Please install brew and run \"brew install node\""

@@ -1,0 +1,14 @@
+{
+    "positioning": {
+        "left-offset-percentage": 59, 
+        "top-offset-percentage": 5, 
+        "width-percentage": 32.5, 
+        "height-percentage": 90
+    }, 
+    "lists-to-display": [
+    ], 
+    "urgency-filters": {
+        "display-tasks-without-due-date": true, 
+        "display-tasks-due-within-x-days": 7
+    }
+}
