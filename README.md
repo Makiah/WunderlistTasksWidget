@@ -14,7 +14,9 @@ There are a couple things you'll need first.
 
 Once they're installed, download the [latest release](https://github.com/Makiah/WunderlistTasksWidget/releases) and extract it to the Übersicht widgets folder.  Then open Übersicht, and you should get a screen that looks like this: 
 
-![Request Auth](/doc/Login.png?raw=true "Login")
+<p align="center"> 
+<img src="/doc/Login.png">
+</p>
 
 If you log in, this app should complete the OAuth flow and close the tab, then display your tasks.  If you experience a bug, please report it to the Issues page.  
 
@@ -28,7 +30,7 @@ Use the `customization.json` file if you need to change settings from the defaul
         "left-offset-percentage": 59,  // the extent to which your widget will be spaced away from the left side of the screen 
         "top-offset-percentage": 5,    // the extent to which your widget will be spaced away from the top side of the screen 
         "width-percentage": 32.5,      // the width of your image, expressed in a percentage of your screen width
-        "height-percentage": 90        // the width of your image, expressed in a percentage of your screen height
+        "height-percentage": 90        // the height of your image, expressed in a percentage of your screen height
     }, 
     "lists-to-display": [
     ], 
