@@ -27,16 +27,19 @@ Use the `customization.json` file if you need to change settings from the defaul
 ```
 {
     "positioning": {
-        "left-offset-percentage": 59,  // the extent to which your widget will be spaced away from the left side of the screen 
-        "top-offset-percentage": 5,    // the extent to which your widget will be spaced away from the top side of the screen 
-        "width-percentage": 32.5,      // the width of your image, expressed in a percentage of your screen width
-        "height-percentage": 90        // the height of your image, expressed in a percentage of your screen height
+        "left-offset-percentage": 59, 
+        "top-offset-percentage": 5, 
+        "width-percentage": 32.5, 
+        "height-percentage": 90 
     }, 
     "lists-to-display": [
+        "My First List", 
+        "My Second List", 
+        "Leave this array empty if you want to include all lists"
     ], 
     "urgency-filters": {
-        "display-tasks-without-due-date": true,  // whether to display tasks without a due date
-        "display-tasks-due-within-x-days": 7     // the maximum number of days between now and the task's due date for it to be considered "urgent"
+        "display-tasks-without-due-date": true,
+        "display-tasks-due-within-x-days": 7
     }
 }
 ```
